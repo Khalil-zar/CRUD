@@ -1,0 +1,65 @@
+﻿
+@model IEnumerable<Project.Models.Student>
+<head>
+    <script>
+        function showPopup() {
+            var nom = document.getElementById("nom").value;
+            var prenom = document.getElementById("prenom").value;
+            if (nom !== "" && prenom !== "") {
+                document.getElementById("popup").style.display = "block";
+                setTimeout(function () {
+                    document.getElementById("popup").style.display = "none";
+                }, 9000);
+            }
+        }
+        function fermerPopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+    </script>
+    <style>
+        
+        .small-input {
+            width: 800px;
+        }
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px;
+            z-index: 1;
+            display: none;
+        }
+
+            #popup button {
+                margin-top: 10px;
+            }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center">Ajouter un etudiant </h1>
+    <form asp-controller="Home" asp-action="AjouterContact" method="POST">
+        <div class="form-group ">
+            <label for="exampleInputEmail1" style="margin-left:250px;font-size:20px">Nom</label>
+            <div class="d-flex justify-content-center">
+            <input type="text" name="nom" id="nom" class="form-control small-input" aria-describedby="emailHelp" placeholder="Entrer Votre Nom" required>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="exampleInputPassword1" style="margin-left:250px;font-size:20px">Prenom</label>
+            <div class="d-flex justify-content-center">
+            <input type="text" name="prenom" id="prenom" class="form-control small-input" placeholder="Entrer Votre Prenom" required>
+             </div>
+        </div>
+        <div class="col-md-12 text-center" style="margin-top:20px">
+        <button type="submit" class="btn btn-primary" onclick="showPopup(); return true;" >Ajouter</button>
+        </div>
+    </form>
+    <div id="popup">
+        <h3>L'Etudiant' a été ajouté avec succès.</h3>
+        <button onclick="fermerPopup()">Fermer</button>
+    </div>
+</body>

@@ -1,0 +1,29 @@
+﻿@model Project.Models.Student
+<head>
+    <style>
+        .small-input {
+            width: 800px;
+            
+        }
+    </style>
+</head>
+<h1 style="text-align:center">Modifier un étudiant </h1>
+@using (Html.BeginForm("ModifierEtudiant", "Home", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-group">
+        <label style="margin-left:250px;font-size:20px">Nom</label>
+        <div class="d-flex justify-content-center">
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control small-input", @value = Model != null ? Model.Name : "" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label style="margin-left:250px;font-size:20px">Prénom</label>
+        <div class="d-flex justify-content-center">
+        @Html.TextBoxFor(model => model.Prenom, new { @class = "form-control small-input", @value = Model != null ? Model.Prenom : "" })
+        </div>
+    </div>
+    <div class="col-md-12 text-center" style="margin-top:20px">
+    <button type="submit" class="btn btn-primary">Modifier</button>
+    </div>
+}

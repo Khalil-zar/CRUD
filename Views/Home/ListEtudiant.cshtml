@@ -1,0 +1,27 @@
+﻿
+<h1 style="text-align:center">Liste des etudiants </h1>
+<table class="table" style="margin: 0 auto;width: 1050px; ">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var etudiant in Model)
+        {
+            <tr>
+                <td>@etudiant.Id</td>
+                <td>@etudiant.Name</td>
+                <td>@etudiant.Prenom</td>
+                <td>
+                <a href="@Url.Action("GetData", "Home", new { id = @etudiant.Id })" class="btn btn-success">Modifier</a>
+                <a href="@Url.Action("Delete", "Home", new { id = @etudiant.Id })" class="btn btn-danger">Supprimer</a>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
